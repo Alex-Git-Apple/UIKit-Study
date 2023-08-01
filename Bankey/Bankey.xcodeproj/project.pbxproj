@@ -14,6 +14,7 @@
 		FE8A81182A79B99900E704B3 /* BankeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8A81172A79B99900E704B3 /* BankeyTests.swift */; };
 		FE8A81222A79B99A00E704B3 /* BankeyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8A81212A79B99A00E704B3 /* BankeyUITests.swift */; };
 		FE8A81242A79B99A00E704B3 /* BankeyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8A81232A79B99A00E704B3 /* BankeyUITestsLaunchTests.swift */; };
+		FE8A81332A79C6F800E704B3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8A81322A79C6F800E704B3 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		FE8A811D2A79B99A00E704B3 /* BankeyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankeyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8A81212A79B99A00E704B3 /* BankeyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankeyUITests.swift; sourceTree = "<group>"; };
 		FE8A81232A79B99A00E704B3 /* BankeyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankeyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FE8A81322A79C6F800E704B3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				FE8A81042A79B99600E704B3 /* LoginViewController.swift */,
+				FE8A81322A79C6F800E704B3 /* LoginView.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE8A81332A79C6F800E704B3 /* LoginView.swift in Sources */,
 				FE8A81052A79B99600E704B3 /* LoginViewController.swift in Sources */,
 				FE8A81012A79B99600E704B3 /* AppDelegate.swift in Sources */,
 			);
