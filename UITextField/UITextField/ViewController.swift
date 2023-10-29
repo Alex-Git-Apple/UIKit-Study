@@ -19,7 +19,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        setUp()
         style()
+        layout()
+    }
+    
+    func setUp() {
+        setUpDismissKeyboardGesture()
+    }
+    
+    func setUpDismissKeyboardGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        view.addGestureRecognizer(tapGesture)
     }
     
     func style() {
@@ -43,8 +54,6 @@ class ViewController: UIViewController {
         button.backgroundColor = .orange
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        
-        layout()
     }
     
     func layout() {
@@ -80,6 +89,11 @@ class ViewController: UIViewController {
     
     @objc func buttonTapped(_ sender: UIButton) {
         print("A button tap would not change the first responder status.")
+    }
+    
+    //
+    @objc func viewTapped(_ recognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
 }
 
