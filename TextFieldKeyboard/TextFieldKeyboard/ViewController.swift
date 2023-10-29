@@ -70,20 +70,55 @@ class ViewController: UIViewController {
     @objc func viewTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
+    
+    func currentFirstResponder(_ view: UIView) -> UIView? {
+        if view.isFirstResponder {
+            return view
+        }
+        
+        for subView in view.subviews {
+            if let firstResponder = currentFirstResponder(subView) {
+                return firstResponder
+            }
+        }
+        
+        return nil
+    }
 }
 
 // MARK: Keyboard
 extension ViewController {
     @objc func keyboardWillShow(_ sender: NSNotification) {
-        print("keyboard will show")
+        view.frame.origin.y -= 200
+        guard let currentTextField = UIResponder.currentFirst() as? UITextField else {
+            return
+        }
+        
+        print(currentTextField.frame)
     }
     
     @objc func keyboardWillHide(_ sender: NSNotification) {
-        print("keyboard will hide")
+        view.frame.origin.y = 0
     }
 }
 
 extension ViewController: UITextFieldDelegate {
     
+}
+
+extension UIResponder {
+    private struct Static {
+        static weak var responder: UIResponder?
+    }
+    
+    static func currentFirst() -> UIResponder? {
+        Static.responder = nil
+        UIApplication.shared.sendAction(#selector(UIResponder.trap), to: nil, from: nil, for: nil)
+        return Static.responder
+    }
+    
+    @objc func trap() {
+        Static.responder = self
+    }
 }
 
