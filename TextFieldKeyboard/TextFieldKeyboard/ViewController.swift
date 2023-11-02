@@ -89,9 +89,20 @@ class ViewController: UIViewController {
 // MARK: Keyboard
 extension ViewController {
     @objc func keyboardWillShow(_ sender: NSNotification) {
-        view.frame.origin.y -= 200
-        guard let currentTextField = UIResponder.currentFirst() as? UITextField else {
+        guard let userInfo = sender.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let currentTextField = UIResponder.currentFirst() as? UITextField else {
             return
+        }
+        
+        
+        let keyboardTopY = keyboardFrame.cgRectValue.origin.y
+        let textFieldBottomY = currentTextField.frame.origin.y + currentTextField.frame.size.height
+        
+        if textFieldBottomY > keyboardTopY {
+            let textBoxY = currentTextField.frame.origin.y
+            let newFrameY = (textBoxY - keyboardTopY/2) * -1
+            view.frame.origin.y = newFrameY
         }
         
         print(currentTextField.frame)
