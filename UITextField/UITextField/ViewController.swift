@@ -25,7 +25,17 @@ class ViewController: UIViewController {
     }
     
     func setUp() {
+        addSubViews()
         setUpDismissKeyboardGesture()
+    }
+
+    func addSubViews() {
+        view.addSubview(textField)
+        view.addSubview(textField2)
+        view.addSubview(button)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField2.translatesAutoresizingMaskIntoConstraints = false
+        button.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func setUpDismissKeyboardGesture() {
@@ -34,17 +44,11 @@ class ViewController: UIViewController {
     }
     
     func style() {
-        view.addSubview(textField)
-        view.addSubview(textField2)
-        view.addSubview(button)
-        
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Text Field 1."
         textField.borderStyle = .bezel
         textField.delegate = self
         textField.addTarget(self, action: #selector(contentDidChange), for: .editingChanged)
         
-        textField2.translatesAutoresizingMaskIntoConstraints = false
         textField2.placeholder = "Text Field 2."
         textField2.borderStyle = .line
         textField2.delegate = self
@@ -52,7 +56,6 @@ class ViewController: UIViewController {
         button.setTitle("Button", for: .normal)
         button.layer.borderWidth = 1.0
         button.backgroundColor = .orange
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
