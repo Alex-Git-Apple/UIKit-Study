@@ -29,7 +29,7 @@ class ViewController: UITabBarController {
         let nc3 = UINavigationController(rootViewController: vc3)
         let nc4 = UINavigationController(rootViewController: vc4)
         
-        self.viewControllers = [nc1, nc2, nc3, nc4]
+        self.viewControllers = [nc1, nc2, nc3, vc4]
     }
 
 }
