@@ -15,6 +15,8 @@
 		FE95D2582B02E1B2006B8BEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE95D2562B02E1B2006B8BEE /* LaunchScreen.storyboard */; };
 		FE95D2612B02E220006B8BEE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95D2602B02E220006B8BEE /* Coordinator.swift */; };
 		FE95D2632B02E2E1006B8BEE /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95D2622B02E2E1006B8BEE /* MainCoordinator.swift */; };
+		FE95D2672B02EAE5006B8BEE /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95D2662B02EAE5006B8BEE /* BuyViewController.swift */; };
+		FE95D2692B02EB0C006B8BEE /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95D2682B02EB0C006B8BEE /* CreateAccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		FE95D2592B02E1B2006B8BEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE95D2602B02E220006B8BEE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		FE95D2622B02E2E1006B8BEE /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		FE95D2662B02EAE5006B8BEE /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
+		FE95D2682B02EB0C006B8BEE /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				FE95D24F2B02E1B0006B8BEE /* MainViewController.swift */,
+				FE95D2662B02EAE5006B8BEE /* BuyViewController.swift */,
+				FE95D2682B02EB0C006B8BEE /* CreateAccountViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -168,11 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE95D2692B02EB0C006B8BEE /* CreateAccountViewController.swift in Sources */,
 				FE95D2612B02E220006B8BEE /* Coordinator.swift in Sources */,
 				FE95D2502B02E1B0006B8BEE /* MainViewController.swift in Sources */,
 				FE95D24C2B02E1B0006B8BEE /* AppDelegate.swift in Sources */,
 				FE95D2632B02E2E1006B8BEE /* MainCoordinator.swift in Sources */,
 				FE95D24E2B02E1B0006B8BEE /* SceneDelegate.swift in Sources */,
+				FE95D2672B02EAE5006B8BEE /* BuyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
