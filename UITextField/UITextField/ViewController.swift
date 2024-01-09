@@ -113,9 +113,10 @@ extension ViewController: UITextFieldDelegate {
         return true
     }
     
+    // Note: When returnig false the logic will still be executed. So we should not do anything if returning false to prevent confusion.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
-        return true
+        return false
     }
     
 }
