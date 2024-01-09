@@ -1,6 +1,7 @@
 import UIKit
 
-class MainCoordinator: Coordinator {
+class MainCoordinator: Coordinator, MainViewControllerDelegate {
+    
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
 
@@ -10,14 +11,14 @@ class MainCoordinator: Coordinator {
 
     func start() {
         let vc = MainViewController()
-        vc.coordinator = self
+        vc.delegate = self
         navigationController.pushViewController(vc, animated: false)
     }
     
     func buySubscription() {
-        let vc = BuyViewController()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        let buyCoordinator = BuyCoordinator(navigationController: navigationController)
+        childCoordinators.append(buyCoordinator)
+        buyCoordinator.start()
     }
 
     func createAccount() {
@@ -25,4 +26,5 @@ class MainCoordinator: Coordinator {
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
+    
 }

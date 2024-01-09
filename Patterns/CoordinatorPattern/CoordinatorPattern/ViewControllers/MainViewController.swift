@@ -7,9 +7,17 @@
 
 import UIKit
 
+protocol MainViewControllerDelegate: AnyObject {
+    
+    func buySubscription()
+    
+    func createAccount()
+    
+}
+
 class MainViewController: UIViewController {
     
-    weak var coordinator: MainCoordinator?
+    weak var delegate: MainViewControllerDelegate?
     
     let creatAccountButton = UIButton(type: .contactAdd)
     let buyButton = UIButton(type: .detailDisclosure)
@@ -61,11 +69,11 @@ class MainViewController: UIViewController {
     }
     
     @objc func buyTapped(_ sender: Any) {
-        coordinator?.buySubscription()
+        delegate?.buySubscription()
     }
 
     @objc func createAccount(_ sender: Any) {
-        coordinator?.createAccount()
+        delegate?.createAccount()
     }
 
 }

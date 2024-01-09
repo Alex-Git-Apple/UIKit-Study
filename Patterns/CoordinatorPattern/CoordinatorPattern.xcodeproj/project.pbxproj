@@ -17,6 +17,7 @@
 		FE95D2632B02E2E1006B8BEE /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95D2622B02E2E1006B8BEE /* MainCoordinator.swift */; };
 		FE95D2672B02EAE5006B8BEE /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95D2662B02EAE5006B8BEE /* BuyViewController.swift */; };
 		FE95D2692B02EB0C006B8BEE /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95D2682B02EB0C006B8BEE /* CreateAccountViewController.swift */; };
+		FE95D26B2B02F40F006B8BEE /* BuyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95D26A2B02F40F006B8BEE /* BuyCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FE95D2622B02E2E1006B8BEE /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		FE95D2662B02EAE5006B8BEE /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		FE95D2682B02EB0C006B8BEE /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		FE95D26A2B02F40F006B8BEE /* BuyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				FE95D2602B02E220006B8BEE /* Coordinator.swift */,
 				FE95D2622B02E2E1006B8BEE /* MainCoordinator.swift */,
+				FE95D26A2B02F40F006B8BEE /* BuyCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				FE95D2692B02EB0C006B8BEE /* CreateAccountViewController.swift in Sources */,
 				FE95D2612B02E220006B8BEE /* Coordinator.swift in Sources */,
 				FE95D2502B02E1B0006B8BEE /* MainViewController.swift in Sources */,
+				FE95D26B2B02F40F006B8BEE /* BuyCoordinator.swift in Sources */,
 				FE95D24C2B02E1B0006B8BEE /* AppDelegate.swift in Sources */,
 				FE95D2632B02E2E1006B8BEE /* MainCoordinator.swift in Sources */,
 				FE95D24E2B02E1B0006B8BEE /* SceneDelegate.swift in Sources */,
