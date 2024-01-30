@@ -29,7 +29,7 @@ class SearchVC: UIViewController {
     
     func setUpNserNameTextField() {
         view.addSubview(userNameTextField)
-        userNameTextField.layer.borderWidth = 10
+        userNameTextField.layer.borderWidth = 1
         userNameTextField.layer.cornerRadius = 15
         
         userNameTextField.translatesAutoresizingMaskIntoConstraints = false
