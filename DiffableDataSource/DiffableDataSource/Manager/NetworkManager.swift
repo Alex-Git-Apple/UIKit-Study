@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum DDError: String, Error {
     case BadResponseError
     case DecodingError
     case BADURL
+    case BADImage
 }
 
 class NetworkManager {
@@ -37,6 +39,22 @@ class NetworkManager {
             return followers
         } else {
             throw DDError.DecodingError
+        }
+    }
+    
+    func downloadImage(url urlSring: String) async throws -> UIImage {
+        guard let url = URL(string: urlSring) else {
+            throw DDError.BADURL
+        }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            if let image = UIImage(data: data) {
+                return image
+            } else {
+                throw DDError.BADImage
+            }
+        } catch {
+            throw DDError.BadResponseError
         }
     }
     

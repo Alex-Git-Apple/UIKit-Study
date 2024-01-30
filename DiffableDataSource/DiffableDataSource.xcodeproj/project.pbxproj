@@ -17,6 +17,7 @@
 		FE3D57B42B69777100A1B94A /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D57B32B69777100A1B94A /* Follower.swift */; };
 		FE3D57B62B6977AA00A1B94A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D57B52B6977AA00A1B94A /* User.swift */; };
 		FE3D57B92B69789C00A1B94A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D57B82B69789C00A1B94A /* NetworkManager.swift */; };
+		FE3D57BB2B69871E00A1B94A /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D57BA2B69871E00A1B94A /* FollowerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FE3D57B32B69777100A1B94A /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		FE3D57B52B6977AA00A1B94A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FE3D57B82B69789C00A1B94A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FE3D57BA2B69871E00A1B94A /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				FE3D579E2B695DE700A1B94A /* MainViewController.swift */,
 				FE3D57AE2B69634700A1B94A /* SearchVC.swift */,
 				FE3D57B02B696A1800A1B94A /* FollowerListVC.swift */,
+				FE3D57BA2B69871E00A1B94A /* FollowerCell.swift */,
 				FE3D57A32B695DE900A1B94A /* Assets.xcassets */,
 				FE3D57A52B695DE900A1B94A /* LaunchScreen.storyboard */,
 				FE3D57A82B695DE900A1B94A /* Info.plist */,
@@ -170,6 +173,7 @@
 				FE3D579F2B695DE700A1B94A /* MainViewController.swift in Sources */,
 				FE3D57B12B696A1800A1B94A /* FollowerListVC.swift in Sources */,
 				FE3D579B2B695DE700A1B94A /* AppDelegate.swift in Sources */,
+				FE3D57BB2B69871E00A1B94A /* FollowerCell.swift in Sources */,
 				FE3D57B92B69789C00A1B94A /* NetworkManager.swift in Sources */,
 				FE3D579D2B695DE700A1B94A /* SceneDelegate.swift in Sources */,
 				FE3D57B62B6977AA00A1B94A /* User.swift in Sources */,
