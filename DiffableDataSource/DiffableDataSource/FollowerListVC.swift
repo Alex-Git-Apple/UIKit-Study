@@ -15,6 +15,7 @@ class FollowerListVC: UIViewController {
     
     var username: String!
     var followers: [Follower] = []
+    var filteredFollowers: [Follower] = []
     var page = 1
     
     var collectionView: UICollectionView!
@@ -25,6 +26,7 @@ class FollowerListVC: UIViewController {
         view.backgroundColor = .systemBackground
         title = username
         configureCollectionView()
+        configureSearchController()
         configureDataSource()
 
         // Do any additional setup after loading the view.
@@ -37,6 +39,13 @@ class FollowerListVC: UIViewController {
         collectionView.backgroundColor = .systemPink
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reusedID)
         collectionView.delegate = self
+    }
+    
+    func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search a username"
+        navigationItem.searchController = searchController
     }
     
     func configureDataSource() {
@@ -76,4 +85,15 @@ extension FollowerListVC: UICollectionViewDelegateFlowLayout {
         let width = view.bounds.width / 3 - 10
         return CGSize(width: width, height: width)
     }
+}
+
+extension FollowerListVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        filteredFollowers = followers.filter{ $0.login.lowercased().contains(filter.lowercased())}
+        
+        // Update Data source.
+    }
+    
+    
 }
