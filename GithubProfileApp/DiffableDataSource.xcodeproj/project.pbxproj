@@ -57,22 +57,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FE2285142BC70D7400E0E5C8 /* Views */ = {
+		FE2285142BC70D7400E0E5C8 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				FE2285152BC70DB600E0E5C8 /* GFTitleLabel.swift */,
 				FE2285172BC70EF700E0E5C8 /* GFBodyLabel.swift */,
 				FE22851F2BC750CB00E0E5C8 /* GFButton.swift */,
 			);
-			path = Views;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
-		FE2285192BC70FAB00E0E5C8 /* ViewControllers */ = {
+		FE2285192BC70FAB00E0E5C8 /* CustomViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				FE22851A2BC70FD100E0E5C8 /* GFAlertViewController.swift */,
 			);
-			path = ViewControllers;
+			path = CustomViewControllers;
 			sourceTree = "<group>";
 		};
 		FE22851C2BC7476E00E0E5C8 /* Extensions */ = {
@@ -81,6 +81,17 @@
 				FE22851D2BC7479400E0E5C8 /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FE2285212BC8387000E0E5C8 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				FE3D579E2B695DE700A1B94A /* MainViewController.swift */,
+				FE3D57AE2B69634700A1B94A /* SearchVC.swift */,
+				FE3D57B02B696A1800A1B94A /* FollowerListVC.swift */,
+				FE3D57BA2B69871E00A1B94A /* FollowerCell.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		FE3D578E2B695DE600A1B94A = {
@@ -102,17 +113,14 @@
 		FE3D57992B695DE700A1B94A /* DiffableDataSource */ = {
 			isa = PBXGroup;
 			children = (
+				FE2285212BC8387000E0E5C8 /* Screens */,
 				FE22851C2BC7476E00E0E5C8 /* Extensions */,
-				FE2285192BC70FAB00E0E5C8 /* ViewControllers */,
-				FE2285142BC70D7400E0E5C8 /* Views */,
+				FE2285192BC70FAB00E0E5C8 /* CustomViewControllers */,
+				FE2285142BC70D7400E0E5C8 /* CustomViews */,
 				FE3D57B72B69788B00A1B94A /* Manager */,
 				FE3D57B22B69776200A1B94A /* Model */,
 				FE3D579A2B695DE700A1B94A /* AppDelegate.swift */,
 				FE3D579C2B695DE700A1B94A /* SceneDelegate.swift */,
-				FE3D579E2B695DE700A1B94A /* MainViewController.swift */,
-				FE3D57AE2B69634700A1B94A /* SearchVC.swift */,
-				FE3D57B02B696A1800A1B94A /* FollowerListVC.swift */,
-				FE3D57BA2B69871E00A1B94A /* FollowerCell.swift */,
 				FE3D57A32B695DE900A1B94A /* Assets.xcassets */,
 				FE3D57A52B695DE900A1B94A /* LaunchScreen.storyboard */,
 				FE3D57A82B695DE900A1B94A /* Info.plist */,
