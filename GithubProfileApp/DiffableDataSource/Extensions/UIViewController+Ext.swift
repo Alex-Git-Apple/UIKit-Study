@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 extension UIViewController {
     
     func presentGFAlert(title: String, messge: String, buttonTitle: String) {
@@ -17,4 +18,28 @@ extension UIViewController {
             present(alertVC, animated: true)
         }
     }
+    
+    func loadingView() -> UIView {
+        let containerView = UIView(frame: view.bounds)
+        
+        containerView.backgroundColor = .systemBackground
+        containerView.alpha = 0
+        
+        UIView.animate(withDuration: 0.8) {
+            containerView.alpha = 0.8
+        }
+        
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        containerView.addSubview(activityIndicator)
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints  = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
+        ])
+        
+        activityIndicator.startAnimating()
+        return containerView
+    }
+    
 }

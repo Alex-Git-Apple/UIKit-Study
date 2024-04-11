@@ -20,6 +20,8 @@ class FollowerListVC: UIViewController {
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
+    
+    var loadingView: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +50,14 @@ class FollowerListVC: UIViewController {
         })
     }
     
+    @MainActor
     func loadFollowers() {
+        showLoadingView()
         Task {
             do {
+                defer {
+                    dismissLoadingView()
+                }
                 let latestLoadedFollowers = try await NetworkManager.shared.getFollowers(for: username, page: page)
                 if latestLoadedFollowers.count < 100 {
                     hasMoreFollowers = false
@@ -95,4 +102,20 @@ extension FollowerListVC: UICollectionViewDelegate {
         }
     }
     
+}
+
+@MainActor
+extension FollowerListVC {
+    func showLoadingView() {
+        let loadingView = loadingView()
+        view.addSubview(loadingView)
+        self.loadingView = loadingView
+    }
+    
+    func dismissLoadingView() {
+        if let loadingView = self.loadingView {
+            loadingView.removeFromSuperview()
+            self.loadingView = nil
+        }
+    }
 }
