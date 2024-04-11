@@ -16,6 +16,7 @@ class FollowerListVC: UIViewController {
     var username: String!
     var followers: [Follower] = []
     var page = 1
+    var hasMoreFollowers = true
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
@@ -50,7 +51,11 @@ class FollowerListVC: UIViewController {
     func loadFollowers() {
         Task {
             do {
-                followers = try await NetworkManager.shared.getFollowers(for: username, page: page)
+                let latestLoadedFollowers = try await NetworkManager.shared.getFollowers(for: username, page: page)
+                if latestLoadedFollowers.count < 100 {
+                    hasMoreFollowers = false
+                }
+                followers += latestLoadedFollowers
                 updateData()
             } catch {
                 print("Failed to load followers")
@@ -69,10 +74,25 @@ class FollowerListVC: UIViewController {
 
 }
 
-
 extension FollowerListVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.bounds.width / 3 - 10
         return CGSize(width: width, height: width)
     }
+}
+
+extension FollowerListVC: UICollectionViewDelegate {
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if contentHeight - offsetY - height < 100 {
+            guard hasMoreFollowers else { return }
+            page += 1
+            loadFollowers()
+        }
+    }
+    
 }
