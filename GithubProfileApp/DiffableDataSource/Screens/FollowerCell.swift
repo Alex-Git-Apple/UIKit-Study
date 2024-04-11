@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 class FollowerCell: UICollectionViewCell {
     static let reusedID = "FollowerCell"
     
@@ -30,13 +31,8 @@ class FollowerCell: UICollectionViewCell {
     
     func downloadImageAsync(url urlSring: String) {
         Task {
-            do {
-                self.avatarImageView.image = try await NetworkManager.shared.downloadImage(url: urlSring)
-            } catch {
-                // nothing now
-            }
+            self.avatarImageView.image = try? await NetworkManager.shared.image(url: urlSring)
         }
-        
     }
     
     private func setUp() {

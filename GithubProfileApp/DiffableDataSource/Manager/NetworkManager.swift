@@ -15,9 +15,11 @@ enum DDError: String, Error {
     case BADImage
 }
 
-class NetworkManager {
+final class NetworkManager: Sendable {
+    
     static let shared = NetworkManager()
     let baseURL = "https://api.github.com"
+    let imageCache = ImageCache()
     
     private init() { }
     
@@ -27,7 +29,7 @@ class NetworkManager {
             throw DDError.BADURL
         }
         
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let (data, response) = try await URLSession.shared.data(from: url, delegate: nil)
         
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw DDError.BadResponseError
@@ -42,20 +44,68 @@ class NetworkManager {
         }
     }
     
-    func downloadImage(url urlSring: String) async throws -> UIImage {
-        guard let url = URL(string: urlSring) else {
-            throw DDError.BADURL
-        }
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            if let image = UIImage(data: data) {
+    func image(url urlString: String) async throws -> UIImage {
+        if let cachedEntry = await imageCache.cachedEntry(for: urlString) {
+            switch cachedEntry {
+            case .finished(let image):
                 return image
-            } else {
-                throw DDError.BADImage
+            case .inProgress(let task):
+                return try await task.value
             }
+        }
+        
+        let task = Task {
+            return try await self.downloadImage(url: urlString)
+        }
+        
+        await imageCache.addTask(for: urlString, task: task)
+        
+        do {
+            let image = try await task.value
+            await imageCache.addImage(for: urlString, image: image)
+            return image
         } catch {
+            await imageCache.removeFailedTask(for: urlString)
             throw DDError.BadResponseError
         }
     }
     
+    private func downloadImage(url urlString: String) async throws -> UIImage {
+        guard let url = URL(string: urlString) else {
+            throw DDError.BADURL
+        }
+        let (data, _) = try await URLSession.shared.data(from: url)
+        if let image = UIImage(data: data) {
+            return image
+        } else {
+            throw DDError.BADImage
+        }
+    }
+    
+}
+
+actor ImageCache {
+    
+    enum CachedEntry {
+        case finished(UIImage)
+        case inProgress(Task<UIImage, Error>)
+    }
+    
+    private var cache = [String: CachedEntry]()
+    
+    func cachedEntry(for url: String) -> CachedEntry? {
+        return cache[url]
+    }
+    
+    func addTask(for url: String, task: Task<UIImage, Error>) {
+        cache[url] = .inProgress(task)
+    }
+    
+    func addImage(for url: String, image: UIImage) {
+        cache[url] = .finished(image)
+    }
+    
+    func removeFailedTask(for url: String) {
+        cache[url] = nil
+    }
 }
