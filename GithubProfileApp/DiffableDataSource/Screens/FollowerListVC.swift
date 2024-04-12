@@ -63,6 +63,12 @@ class FollowerListVC: UIViewController {
                     hasMoreFollowers = false
                 }
                 followers += latestLoadedFollowers
+                
+                if followers.isEmpty {
+                    let message = "This user doesn't have any followers. Go follow them. 😁"
+                    showEmptyStateView(with: message, in: self.view)
+                    return
+                }
                 updateData()
             } catch {
                 print("Failed to load followers")
