@@ -42,6 +42,28 @@ final class NetworkManager: Sendable {
         } else {
             throw DDError.DecodingError
         }
+        
+    }
+    
+    func getUserInfo(for username: String) async throws -> User {
+        let endpoint = baseURL + "/users/\(username)"
+        guard let url = URL(string: endpoint) else {
+            throw DDError.BADURL
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw DDError.BadResponseError
+        }
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        if let user = try? decoder.decode(User.self, from: data) {
+            return user
+        } else {
+            throw DDError.DecodingError
+        }
     }
     
     func image(url urlString: String) async throws -> UIImage {

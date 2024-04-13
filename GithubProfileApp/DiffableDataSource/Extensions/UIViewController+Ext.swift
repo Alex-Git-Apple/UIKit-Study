@@ -10,8 +10,8 @@ import UIKit
 @MainActor
 extension UIViewController {
     
-    func presentGFAlert(title: String, messge: String, buttonTitle: String) {
-        let alertVC = GFAlertViewController(title: title, message: messge, buttonTitle: buttonTitle)
+    func presentGFAlert(title: String, message: String, buttonTitle: String) {
+        let alertVC = GFAlertViewController(title: title, message: message, buttonTitle: buttonTitle)
         alertVC.modalPresentationStyle = .overFullScreen
         alertVC.modalTransitionStyle = .crossDissolve
         Task { @MainActor in
