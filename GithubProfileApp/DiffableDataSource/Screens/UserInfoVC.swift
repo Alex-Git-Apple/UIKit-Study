@@ -10,8 +10,12 @@ import UIKit
 class UserInfoVC: UIViewController {
     
     let headerView = UIView()
+    let itemViewOne = UIView()
+    let itemViewTwo = UIView()
+    var itemViews: [UIView] = []
     
     var username: String
+    var userInfo: User?
     
     init(username: String) {
         self.username = username
@@ -24,33 +28,58 @@ class UserInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissView))
-        navigationItem.rightBarButtonItem = doneButton
-        
-        Task {
-            do {
-                let userInfo = try await NetworkManager.shared.getUserInfo(for: username)
-                self.addChildVC(childVC: GFUserInfoHeaderVC(user: userInfo), to: headerView)
-            } catch {
-                presentGFAlert(title: "Something went wrong", message: error.localizedDescription   , buttonTitle: "OK")
-            }
-        }
         
         layoutUI()
+        Task {
+            await downloadUserInfo()
+            addChildViewControllers()
+        }
     }
     
     func layoutUI() {
         view.backgroundColor = .systemBackground
         
-        view.addSubview(headerView)
-        headerView.translatesAutoresizingMaskIntoConstraints = false
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissView))
+        navigationItem.rightBarButtonItem = doneButton
+        
+        let padding: CGFloat = 20
+        
+        itemViews = [headerView, itemViewOne, itemViewTwo]
+        for itemView in itemViews {
+            view.addSubview(itemView)
+            itemView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                itemView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+                itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            ])
+        }
+        
+        let itemHeight: CGFloat = 140
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 160)
+            headerView.heightAnchor.constraint(equalToConstant: 180),
+            
+            itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
+            itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
+            
+            itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
+            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight)
         ])
+    }
+    
+    func downloadUserInfo() async {
+        do {
+            userInfo = try await NetworkManager.shared.getUserInfo(for: username)
+        } catch {
+            presentGFAlert(title: "Something went wrong", message: error.localizedDescription   , buttonTitle: "OK")
+        }
+    }
+    
+    func addChildViewControllers() {
+        if let userInfo = self.userInfo {
+            self.addChildVC(childVC: GFUserInfoHeaderVC(user: userInfo), to: headerView)
+        }
     }
     
     func addChildVC(childVC: UIViewController, to containerView: UIView) {

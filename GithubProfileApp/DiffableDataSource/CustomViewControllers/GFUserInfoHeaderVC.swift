@@ -57,7 +57,7 @@ class GFUserInfoHeaderVC: UIViewController {
         
         NSLayoutConstraint.activate([
             avartarImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
-            avartarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            avartarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             avartarImageView.widthAnchor.constraint(equalToConstant: 90),
             avartarImageView.heightAnchor.constraint(equalToConstant: 90)
         ])
@@ -65,14 +65,14 @@ class GFUserInfoHeaderVC: UIViewController {
         NSLayoutConstraint.activate([
             usernameLabel.topAnchor.constraint(equalTo: avartarImageView.topAnchor),
             usernameLabel.leadingAnchor.constraint(equalTo: avartarImageView.trailingAnchor, constant: textImagePadding),
-            usernameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            usernameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             usernameLabel.heightAnchor.constraint(equalToConstant: 36)
         ])
         
         NSLayoutConstraint.activate([
             nameLabel.centerYAnchor.constraint(equalTo: avartarImageView.centerYAnchor, constant: 8),
             nameLabel.leadingAnchor.constraint(equalTo: avartarImageView.trailingAnchor, constant: textImagePadding),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             nameLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
         
@@ -84,14 +84,14 @@ class GFUserInfoHeaderVC: UIViewController {
             
             locationLabel.centerYAnchor.constraint(equalTo: locationImageView.centerYAnchor),
             locationLabel.leadingAnchor.constraint(equalTo: locationImageView.trailingAnchor, constant: 5),
-            locationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            locationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             locationLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
         
         NSLayoutConstraint.activate([
             bioLabel.topAnchor.constraint(equalTo: avartarImageView.bottomAnchor, constant: textImagePadding),
-            bioLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            bioLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             bioLabel.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
