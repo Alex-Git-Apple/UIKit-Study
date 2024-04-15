@@ -11,8 +11,8 @@ import UIKit
 class FollowerCell: UICollectionViewCell {
     static let reusedID = "FollowerCell"
     
-    let label = UILabel(frame: .zero)
-    let avatarImageView = UIImageView()
+    let label = GFTitleLabel(textAlignment: .center, fontSize: 16)
+    let avatarImageView = GFAvartarImageView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,13 +38,6 @@ class FollowerCell: UICollectionViewCell {
     private func setUp() {
         contentView.addSubview(label)
         contentView.addSubview(avatarImageView)
-        
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        avatarImageView.image = UIImage(systemName: "person")
-        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
-        
         layout()
     }
     
