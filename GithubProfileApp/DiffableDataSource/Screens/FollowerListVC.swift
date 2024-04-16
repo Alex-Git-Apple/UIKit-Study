@@ -38,10 +38,17 @@ class FollowerListVC: UIViewController {
     }
     
     func configureCollectionView() {
+        let plusButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = plusButton
+        
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
         view.addSubview(collectionView)
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reusedID)
         collectionView.delegate = self
+    }
+    
+    @objc func addButtonTapped() {
+        print("Tapped")
     }
     
     func configureDataSource() {
