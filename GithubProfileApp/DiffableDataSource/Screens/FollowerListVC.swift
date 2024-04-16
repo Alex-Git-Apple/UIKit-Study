@@ -48,7 +48,27 @@ class FollowerListVC: UIViewController {
     }
     
     @objc func addButtonTapped() {
-        print("Tapped")
+        showLoadingView()
+        
+        Task {
+            do {
+                defer { dismissLoadingView() }
+                let user = try await NetworkManager.shared.getUserInfo(for: username)
+                let follower = Follower(login: user.login, avatarUrl: user.avatarUrl)
+                try PersistenceManager.update(with: follower, actionType: .add)
+                presentGFAlert(title: "Success!", message: "You have successfully favorited this user. 🥳")
+            } catch {
+                var message = ""
+                if let error = error as? GFError {
+                    message = error.rawValue
+                } else {
+                    message = error.localizedDescription
+                }
+                presentGFAlert(title: "Unable to favorite", message: message)
+            }
+            
+        }
+        
     }
     
     func configureDataSource() {

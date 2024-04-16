@@ -11,7 +11,7 @@ import SafariServices
 @MainActor
 extension UIViewController {
     
-    func presentGFAlert(title: String, message: String, buttonTitle: String) {
+    func presentGFAlert(title: String, message: String, buttonTitle: String = "OK") {
         let alertVC = GFAlertViewController(title: title, message: message, buttonTitle: buttonTitle)
         alertVC.modalPresentationStyle = .overFullScreen
         alertVC.modalTransitionStyle = .crossDissolve
