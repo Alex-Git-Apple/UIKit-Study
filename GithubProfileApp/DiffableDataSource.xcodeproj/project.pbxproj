@@ -24,6 +24,8 @@
 		FE2285362BCE10D400E0E5C8 /* GFFollowerItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2285352BCE10D400E0E5C8 /* GFFollowerItemVC.swift */; };
 		FE2285392BCECAC100E0E5C8 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2285382BCECAC100E0E5C8 /* Date+Ext.swift */; };
 		FE22853B2BCECAF700E0E5C8 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE22853A2BCECAF700E0E5C8 /* String+Ext.swift */; };
+		FE22853D2BCF374600E0E5C8 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE22853C2BCF374600E0E5C8 /* PersistenceManager.swift */; };
+		FE22853F2BCF390F00E0E5C8 /* GFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE22853E2BCF390F00E0E5C8 /* GFError.swift */; };
 		FE3D579B2B695DE700A1B94A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D579A2B695DE700A1B94A /* AppDelegate.swift */; };
 		FE3D579D2B695DE700A1B94A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D579C2B695DE700A1B94A /* SceneDelegate.swift */; };
 		FE3D579F2B695DE700A1B94A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D579E2B695DE700A1B94A /* MainViewController.swift */; };
@@ -55,6 +57,8 @@
 		FE2285352BCE10D400E0E5C8 /* GFFollowerItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerItemVC.swift; sourceTree = "<group>"; };
 		FE2285382BCECAC100E0E5C8 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		FE22853A2BCECAF700E0E5C8 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		FE22853C2BCF374600E0E5C8 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		FE22853E2BCF390F00E0E5C8 /* GFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFError.swift; sourceTree = "<group>"; };
 		FE3D57972B695DE700A1B94A /* DiffableDataSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiffableDataSource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3D579A2B695DE700A1B94A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE3D579C2B695DE700A1B94A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				FE22852D2BCCB0F100E0E5C8 /* Constants.swift */,
+				FE22853E2BCF390F00E0E5C8 /* GFError.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				FE3D57B82B69789C00A1B94A /* NetworkManager.swift */,
+				FE22853C2BCF374600E0E5C8 /* PersistenceManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -282,10 +288,12 @@
 				FE3D57B92B69789C00A1B94A /* NetworkManager.swift in Sources */,
 				FE2285342BCE0D7100E0E5C8 /* GFRepoItemVC.swift in Sources */,
 				FE3D579D2B695DE700A1B94A /* SceneDelegate.swift in Sources */,
+				FE22853F2BCF390F00E0E5C8 /* GFError.swift in Sources */,
 				FE22852B2BCC471B00E0E5C8 /* GFAvartarImageView.swift in Sources */,
 				FE22853B2BCECAF700E0E5C8 /* String+Ext.swift in Sources */,
 				FE2285202BC750CB00E0E5C8 /* GFButton.swift in Sources */,
 				FE2285292BCC448B00E0E5C8 /* GFSecondaryTitleLabel.swift in Sources */,
+				FE22853D2BCF374600E0E5C8 /* PersistenceManager.swift in Sources */,
 				FE22852E2BCCB0F100E0E5C8 /* Constants.swift in Sources */,
 				FE2285322BCDA69E00E0E5C8 /* GFItemInfoVC.swift in Sources */,
 				FE2285302BCDA0E100E0E5C8 /* GFItemInfoView.swift in Sources */,
