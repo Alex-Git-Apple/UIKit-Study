@@ -123,9 +123,10 @@ extension FollowerListVC: UICollectionViewDelegate {
         let activeFollower = isSearching ? self.filteredFollowers : self.followers
         let follower = activeFollower[indexPath.item]
         
-        let userInfo = UserInfoVC(username: follower.login)
+        let userInfoVC = UserInfoVC(username: follower.login)
+        userInfoVC.delegate = self
         
-        let navigationVC = UINavigationController(rootViewController: userInfo)
+        let navigationVC = UINavigationController(rootViewController: userInfoVC)
         present(navigationVC, animated: true)
     }
     
@@ -163,5 +164,13 @@ extension FollowerListVC {
             loadingView.removeFromSuperview()
             self.loadingView = nil
         }
+    }
+}
+
+extension FollowerListVC: UserInfoVCDelegate {
+    func requestFollowers(for username: String) {
+        let followerListVC = FollowerListVC()
+        followerListVC.username = username
+        navigationController?.pushViewController(followerListVC, animated: true)
     }
 }

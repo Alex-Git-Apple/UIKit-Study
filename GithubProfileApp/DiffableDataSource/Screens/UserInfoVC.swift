@@ -7,6 +7,11 @@
 
 import UIKit
 
+@MainActor
+protocol UserInfoVCDelegate: AnyObject {
+    func requestFollowers(for username: String)
+}
+
 class UserInfoVC: UIViewController {
     
     let headerView = UIView()
@@ -16,7 +21,7 @@ class UserInfoVC: UIViewController {
     var itemViews: [UIView] = []
     
     var username: String
-    var userInfo: User?
+    weak var delegate: UserInfoVCDelegate?
     
     init(username: String) {
         self.username = username
@@ -35,8 +40,12 @@ class UserInfoVC: UIViewController {
     
     func configure() {
         Task {
-            await downloadUserInfo()
-            displayUserInfo()
+            do {
+                let user =  try await self.downloadUserInfo()
+                displayUserInfo(with: user)
+            } catch {
+                presentGFAlert(title: "Something went wrong", message: error.localizedDescription   , buttonTitle: "OK")
+            }
         }
         layoutUI()
     }
@@ -76,21 +85,19 @@ class UserInfoVC: UIViewController {
         ])
     }
     
-    func downloadUserInfo() async {
-        do {
-            userInfo = try await NetworkManager.shared.getUserInfo(for: username)
-        } catch {
-            presentGFAlert(title: "Something went wrong", message: error.localizedDescription   , buttonTitle: "OK")
-        }
+    func downloadUserInfo() async throws -> User {
+        return try await NetworkManager.shared.getUserInfo(for: username)
     }
     
-    func displayUserInfo() {
-        if let userInfo = self.userInfo {
-            self.addChildVC(childVC: GFUserInfoHeaderVC(user: userInfo), to: headerView)
-            self.addChildVC(childVC: GFRepoItemVC(user: userInfo), to: itemViewOne)
-            self.addChildVC(childVC: GFFollowerItemVC(user: userInfo), to: itemViewTwo)
-            dateLabel.text = "GitHub since \(userInfo.createdAt.convertToDisplayFormate())"
-        }
+    func displayUserInfo(with userInfo: User) {
+        self.addChildVC(childVC: GFUserInfoHeaderVC(user: userInfo), to: headerView)
+        let repoItemVC = GFRepoItemVC(user: userInfo)
+        repoItemVC.delegate = self
+        self.addChildVC(childVC:repoItemVC , to: itemViewOne)
+        let followerItemVC = GFFollowerItemVC(user: userInfo)
+        followerItemVC.delegate = self
+        self.addChildVC(childVC:followerItemVC , to: itemViewTwo)
+        dateLabel.text = "GitHub since \(userInfo.createdAt.convertToDisplayFormate())"
     }
     
     func addChildVC(childVC: UIViewController, to containerView: UIView) {
@@ -103,5 +110,25 @@ class UserInfoVC: UIViewController {
     
     @objc func dismissView() {
         self.dismiss(animated: true)
+    }
+}
+
+extension UserInfoVC: RepoItemVCDelegate, FollowerItemVCDelegate {
+    func didTapGitHubProfoile(for user: User) {
+        guard let url = URL(string: user.htmlUrl) else { 
+            presentGFAlert(title: "Invalid URL", message: "The url attached is invalid", buttonTitle: "OK")
+            return
+        }
+        
+        presentSafariVC(with: url)
+    }
+    
+    func didTapGetFollowers(for user: User) {
+        guard user.followers != 0 else {
+            presentGFAlert(title: "No followers", message: "This user has no followers", buttonTitle: "So Sad")
+            return
+        }
+        delegate?.requestFollowers(for: user.login)
+        self.dismissView()
     }
 }
