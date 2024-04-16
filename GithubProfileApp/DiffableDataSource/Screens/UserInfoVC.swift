@@ -29,11 +29,15 @@ class UserInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        layoutUI()
+        configure()
+    }
+    
+    func configure() {
         Task {
             await downloadUserInfo()
             addChildViewControllers()
         }
+        layoutUI()
     }
     
     func layoutUI() {
@@ -79,13 +83,16 @@ class UserInfoVC: UIViewController {
     func addChildViewControllers() {
         if let userInfo = self.userInfo {
             self.addChildVC(childVC: GFUserInfoHeaderVC(user: userInfo), to: headerView)
+            self.addChildVC(childVC: GFRepoItemVC(user: userInfo), to: itemViewOne)
+            self.addChildVC(childVC: GFFollowerItemVC(user: userInfo), to: itemViewTwo)
         }
     }
     
     func addChildVC(childVC: UIViewController, to containerView: UIView) {
-        addChild(childVC)
         containerView.addSubview(childVC.view)
         childVC.view.frame = containerView.bounds
+        
+        addChild(childVC)
         childVC.didMove(toParent: self)
     }
     
