@@ -12,6 +12,7 @@ class UserInfoVC: UIViewController {
     let headerView = UIView()
     let itemViewOne = UIView()
     let itemViewTwo = UIView()
+    let dateLabel = GFBodyLabel(textAlignment: .center)
     var itemViews: [UIView] = []
     
     var username: String
@@ -35,7 +36,7 @@ class UserInfoVC: UIViewController {
     func configure() {
         Task {
             await downloadUserInfo()
-            addChildViewControllers()
+            displayUserInfo()
         }
         layoutUI()
     }
@@ -48,7 +49,7 @@ class UserInfoVC: UIViewController {
         
         let padding: CGFloat = 20
         
-        itemViews = [headerView, itemViewOne, itemViewTwo]
+        itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
         for itemView in itemViews {
             view.addSubview(itemView)
             itemView.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +69,10 @@ class UserInfoVC: UIViewController {
             itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
             
             itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
-            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight)
+            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
+            
+            dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
+            dateLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
     }
     
@@ -80,11 +84,12 @@ class UserInfoVC: UIViewController {
         }
     }
     
-    func addChildViewControllers() {
+    func displayUserInfo() {
         if let userInfo = self.userInfo {
             self.addChildVC(childVC: GFUserInfoHeaderVC(user: userInfo), to: headerView)
             self.addChildVC(childVC: GFRepoItemVC(user: userInfo), to: itemViewOne)
             self.addChildVC(childVC: GFFollowerItemVC(user: userInfo), to: itemViewTwo)
+            dateLabel.text = "GitHub since \(userInfo.createdAt.convertToDisplayFormate())"
         }
     }
     
