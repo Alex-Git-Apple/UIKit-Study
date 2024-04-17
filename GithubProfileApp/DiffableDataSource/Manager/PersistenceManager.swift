@@ -11,7 +11,7 @@ enum PersistenceActionType {
     case add, remove
 }
 
-enum PersistenceManager {
+actor PersistenceManager {
     
     static private let defualts = UserDefaults.standard
     
