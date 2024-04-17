@@ -92,7 +92,7 @@ class GFAlertViewController: UIViewController {
             messageLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: containerView.leadingAnchor, multiplier: 2),
             containerView.trailingAnchor.constraint(equalToSystemSpacingAfter: messageLabel.trailingAnchor, multiplier: 2),
             messageLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 2),
-            messageLabel.bottomAnchor.constraint(equalToSystemSpacingBelow: messageLabel.bottomAnchor, multiplier: 2)
+            actionButton.topAnchor.constraint(equalToSystemSpacingBelow: messageLabel.bottomAnchor, multiplier: 2)
         ])
     }
     
