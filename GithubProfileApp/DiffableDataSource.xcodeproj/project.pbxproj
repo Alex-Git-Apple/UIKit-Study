@@ -26,6 +26,7 @@
 		FE22853B2BCECAF700E0E5C8 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE22853A2BCECAF700E0E5C8 /* String+Ext.swift */; };
 		FE22853D2BCF374600E0E5C8 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE22853C2BCF374600E0E5C8 /* PersistenceManager.swift */; };
 		FE22853F2BCF390F00E0E5C8 /* GFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE22853E2BCF390F00E0E5C8 /* GFError.swift */; };
+		FE2285412BD01E7C00E0E5C8 /* FavoriateListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2285402BD01E7C00E0E5C8 /* FavoriateListVC.swift */; };
 		FE3D579B2B695DE700A1B94A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D579A2B695DE700A1B94A /* AppDelegate.swift */; };
 		FE3D579D2B695DE700A1B94A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D579C2B695DE700A1B94A /* SceneDelegate.swift */; };
 		FE3D579F2B695DE700A1B94A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D579E2B695DE700A1B94A /* MainViewController.swift */; };
@@ -59,6 +60,7 @@
 		FE22853A2BCECAF700E0E5C8 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		FE22853C2BCF374600E0E5C8 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		FE22853E2BCF390F00E0E5C8 /* GFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFError.swift; sourceTree = "<group>"; };
+		FE2285402BD01E7C00E0E5C8 /* FavoriateListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriateListVC.swift; sourceTree = "<group>"; };
 		FE3D57972B695DE700A1B94A /* DiffableDataSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiffableDataSource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3D579A2B695DE700A1B94A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE3D579C2B695DE700A1B94A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				FE3D57B02B696A1800A1B94A /* FollowerListVC.swift */,
 				FE3D57BA2B69871E00A1B94A /* FollowerCell.swift */,
 				FE2285242BC9E3FC00E0E5C8 /* UserInfoVC.swift */,
+				FE2285402BD01E7C00E0E5C8 /* FavoriateListVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				FE3D579F2B695DE700A1B94A /* MainViewController.swift in Sources */,
 				FE3D57B12B696A1800A1B94A /* FollowerListVC.swift in Sources */,
 				FE3D579B2B695DE700A1B94A /* AppDelegate.swift in Sources */,
+				FE2285412BD01E7C00E0E5C8 /* FavoriateListVC.swift in Sources */,
 				FE2285362BCE10D400E0E5C8 /* GFFollowerItemVC.swift in Sources */,
 				FE2285392BCECAC100E0E5C8 /* Date+Ext.swift in Sources */,
 				FE3D57BB2B69871E00A1B94A /* FollowerCell.swift in Sources */,

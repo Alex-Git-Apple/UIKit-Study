@@ -21,7 +21,11 @@ class MainViewController: UITabBarController {
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         let nv1 = UINavigationController(rootViewController: searchVC)
         
-        viewControllers = [nv1]
+        let favoriteVC = FavoriateListVC()
+        favoriteVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        let nv2 = UINavigationController(rootViewController: favoriteVC)
+        
+        viewControllers = [nv1, nv2]
     }
     
 }

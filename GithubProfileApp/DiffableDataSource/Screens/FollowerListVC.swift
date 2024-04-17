@@ -53,6 +53,7 @@ class FollowerListVC: UIViewController {
         Task {
             do {
                 defer { dismissLoadingView() }
+                
                 let user = try await NetworkManager.shared.getUserInfo(for: username)
                 let follower = Follower(login: user.login, avatarUrl: user.avatarUrl)
                 try PersistenceManager.update(with: follower, actionType: .add)
@@ -66,7 +67,6 @@ class FollowerListVC: UIViewController {
                 }
                 presentGFAlert(title: "Unable to favorite", message: message)
             }
-            
         }
         
     }
