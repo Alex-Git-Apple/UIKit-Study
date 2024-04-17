@@ -13,7 +13,6 @@ class FavoriateListVC: UIViewController {
         super.viewDidLoad()
 
         let favorites = try? PersistenceManager.retrieveFavorites()
-        print(favorites)
     }
 
 }
