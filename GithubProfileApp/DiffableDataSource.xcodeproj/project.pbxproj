@@ -28,6 +28,7 @@
 		FE22853F2BCF390F00E0E5C8 /* GFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE22853E2BCF390F00E0E5C8 /* GFError.swift */; };
 		FE2285412BD01E7C00E0E5C8 /* FavoriteListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2285402BD01E7C00E0E5C8 /* FavoriteListVC.swift */; };
 		FE2285452BD023DE00E0E5C8 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2285442BD023DE00E0E5C8 /* FavoriteCell.swift */; };
+		FE2285482BD180E200E0E5C8 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = FE2285472BD180E200E0E5C8 /* DeviceKit */; };
 		FE3D579B2B695DE700A1B94A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D579A2B695DE700A1B94A /* AppDelegate.swift */; };
 		FE3D579D2B695DE700A1B94A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D579C2B695DE700A1B94A /* SceneDelegate.swift */; };
 		FE3D579F2B695DE700A1B94A /* GFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D579E2B695DE700A1B94A /* GFTabBarController.swift */; };
@@ -83,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE2285482BD180E200E0E5C8 /* DeviceKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +243,9 @@
 			dependencies = (
 			);
 			name = DiffableDataSource;
+			packageProductDependencies = (
+				FE2285472BD180E200E0E5C8 /* DeviceKit */,
+			);
 			productName = DiffableDataSource;
 			productReference = FE3D57972B695DE700A1B94A /* DiffableDataSource.app */;
 			productType = "com.apple.product-type.application";
@@ -269,6 +274,9 @@
 				Base,
 			);
 			mainGroup = FE3D578E2B695DE600A1B94A;
+			packageReferences = (
+				FE2285462BD180E200E0E5C8 /* XCRemoteSwiftPackageReference "DeviceKit" */,
+			);
 			productRefGroup = FE3D57982B695DE700A1B94A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -536,6 +544,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FE2285462BD180E200E0E5C8 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devicekit/DeviceKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FE2285472BD180E200E0E5C8 /* DeviceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FE2285462BD180E200E0E5C8 /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			productName = DeviceKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FE3D578F2B695DE600A1B94A /* Project object */;
 }

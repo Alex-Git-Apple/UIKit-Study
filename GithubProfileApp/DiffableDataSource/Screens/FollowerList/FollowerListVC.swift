@@ -13,7 +13,7 @@ class FollowerListVC: UIViewController {
         case main
     }
     
-    var username: String!
+    var username: String
     var followers: [Follower] = []
     var filteredFollowers: [Follower] = []
     var isSearching = false
@@ -24,7 +24,16 @@ class FollowerListVC: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
     var loadingView: UIView?
-
+    
+    init(username: String) {
+        self.username = username
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -196,8 +205,7 @@ extension FollowerListVC {
 
 extension FollowerListVC: UserInfoVCDelegate {
     func requestFollowers(for username: String) {
-        let followerListVC = FollowerListVC()
-        followerListVC.username = username
+        let followerListVC = FollowerListVC(username: username)
         navigationController?.pushViewController(followerListVC, animated: true)
     }
 }
