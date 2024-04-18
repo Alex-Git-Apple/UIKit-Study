@@ -30,7 +30,7 @@
 		FE2285452BD023DE00E0E5C8 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2285442BD023DE00E0E5C8 /* FavoriteCell.swift */; };
 		FE3D579B2B695DE700A1B94A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D579A2B695DE700A1B94A /* AppDelegate.swift */; };
 		FE3D579D2B695DE700A1B94A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D579C2B695DE700A1B94A /* SceneDelegate.swift */; };
-		FE3D579F2B695DE700A1B94A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D579E2B695DE700A1B94A /* MainViewController.swift */; };
+		FE3D579F2B695DE700A1B94A /* GFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D579E2B695DE700A1B94A /* GFTabBarController.swift */; };
 		FE3D57A42B695DE900A1B94A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE3D57A32B695DE900A1B94A /* Assets.xcassets */; };
 		FE3D57A72B695DE900A1B94A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE3D57A52B695DE900A1B94A /* LaunchScreen.storyboard */; };
 		FE3D57AF2B69634700A1B94A /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D57AE2B69634700A1B94A /* SearchVC.swift */; };
@@ -66,7 +66,7 @@
 		FE3D57972B695DE700A1B94A /* DiffableDataSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiffableDataSource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE3D579A2B695DE700A1B94A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE3D579C2B695DE700A1B94A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FE3D579E2B695DE700A1B94A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FE3D579E2B695DE700A1B94A /* GFTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTabBarController.swift; sourceTree = "<group>"; };
 		FE3D57A32B695DE900A1B94A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE3D57A62B695DE900A1B94A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE3D57A82B695DE900A1B94A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 			children = (
 				FE2285432BD023A800E0E5C8 /* FavoriteList */,
 				FE2285422BD0238900E0E5C8 /* FollowerList */,
-				FE3D579E2B695DE700A1B94A /* MainViewController.swift */,
+				FE3D579E2B695DE700A1B94A /* GFTabBarController.swift */,
 				FE3D57AE2B69634700A1B94A /* SearchVC.swift */,
 				FE2285242BC9E3FC00E0E5C8 /* UserInfoVC.swift */,
 			);
@@ -300,7 +300,7 @@
 				FE22851E2BC7479400E0E5C8 /* UIViewController+Ext.swift in Sources */,
 				FE2285272BCC43F200E0E5C8 /* GFUserInfoHeaderVC.swift in Sources */,
 				FE3D57B42B69777100A1B94A /* Follower.swift in Sources */,
-				FE3D579F2B695DE700A1B94A /* MainViewController.swift in Sources */,
+				FE3D579F2B695DE700A1B94A /* GFTabBarController.swift in Sources */,
 				FE3D57B12B696A1800A1B94A /* FollowerListVC.swift in Sources */,
 				FE3D579B2B695DE700A1B94A /* AppDelegate.swift in Sources */,
 				FE2285412BD01E7C00E0E5C8 /* FavoriteListVC.swift in Sources */,

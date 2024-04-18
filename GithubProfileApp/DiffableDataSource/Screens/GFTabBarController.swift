@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GFTabBarController.swift
 //  DiffableDataSource
 //
 //  Created by Pin Lu on 1/30/24.
@@ -7,12 +7,13 @@
 
 import UIKit
 
-class MainViewController: UITabBarController {
+class GFTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        UITabBar.appearance().tintColor = .systemGreen
         addItems()
     }
     
