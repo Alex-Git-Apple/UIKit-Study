@@ -19,7 +19,6 @@ final class NetworkManager: Sendable {
     
     static let shared = NetworkManager()
     let baseURL = "https://api.github.com"
-    let imageCache = ImageCache()
     
     private init() { }
     
@@ -59,6 +58,7 @@ final class NetworkManager: Sendable {
         
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
         if let user = try? decoder.decode(User.self, from: data) {
             return user
         } else {
@@ -66,33 +66,8 @@ final class NetworkManager: Sendable {
         }
     }
     
-    func image(url urlString: String) async throws -> UIImage {
-        if let cachedEntry = await imageCache.cachedEntry(for: urlString) {
-            switch cachedEntry {
-            case .finished(let image):
-                return image
-            case .inProgress(let task):
-                return try await task.value
-            }
-        }
-        
-        let task = Task {
-            return try await self.downloadImage(url: urlString)
-        }
-        
-        await imageCache.addTask(for: urlString, task: task)
-        
-        do {
-            let image = try await task.value
-            await imageCache.addImage(for: urlString, image: image)
-            return image
-        } catch {
-            await imageCache.removeFailedTask(for: urlString)
-            throw DDError.BadResponseError
-        }
-    }
     
-    private func downloadImage(url urlString: String) async throws -> UIImage {
+    func downloadImage(_ urlString: String) async throws -> UIImage {
         guard let url = URL(string: urlString) else {
             throw DDError.BADURL
         }
@@ -104,30 +79,4 @@ final class NetworkManager: Sendable {
         }
     }
     
-}
-
-actor ImageCache {
-    
-    enum CachedEntry {
-        case finished(UIImage)
-        case inProgress(Task<UIImage, Error>)
-    }
-    
-    private var cache = [String: CachedEntry]()
-    
-    func cachedEntry(for url: String) -> CachedEntry? {
-        return cache[url]
-    }
-    
-    func addTask(for url: String, task: Task<UIImage, Error>) {
-        cache[url] = .inProgress(task)
-    }
-    
-    func addImage(for url: String, image: UIImage) {
-        cache[url] = .finished(image)
-    }
-    
-    func removeFailedTask(for url: String) {
-        cache[url] = nil
-    }
 }

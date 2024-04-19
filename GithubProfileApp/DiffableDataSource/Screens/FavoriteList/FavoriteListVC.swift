@@ -81,11 +81,10 @@ extension FavoriteListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         let favorite = favorites[indexPath.row]
-        favorites.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .left)
-        
         do {
-           try PersistenceManager.update(with: favorite, actionType: .remove)
+            try PersistenceManager.update(with: favorite, actionType: .remove)
+            favorites.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
         } catch {
             presentGFAlert(title: "Unable to remove", message: error.localizedDescription)
         }

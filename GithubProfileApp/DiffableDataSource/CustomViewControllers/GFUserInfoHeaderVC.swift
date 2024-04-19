@@ -98,7 +98,7 @@ class GFUserInfoHeaderVC: UIViewController {
     
     func configureUIElements() {
         Task {
-            avartarImageView.image = try? await NetworkManager.shared.image(url: user.avatarUrl)
+            avartarImageView.image = try? await ImageLoader.shared.downloadImage(url: user.avatarUrl)
         }
         usernameLabel.text = user.login
         nameLabel.text = user.name ?? user.login

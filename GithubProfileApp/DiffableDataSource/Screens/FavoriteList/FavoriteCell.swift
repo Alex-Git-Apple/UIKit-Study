@@ -49,7 +49,7 @@ class FavoriteCell: UITableViewCell {
     func set(favorite: Follower) {
         usernameLabel.text = favorite.login
         Task { @MainActor in
-            avatarImageView.image = try? await NetworkManager.shared.image(url: favorite.avatarUrl)
+            avatarImageView.image = try? await ImageLoader.shared.downloadImage(url: favorite.avatarUrl)
         }
     }
     

@@ -31,7 +31,7 @@ class FollowerCell: UICollectionViewCell {
     
     func downloadImageAsync(url urlSring: String) {
         Task {
-            self.avatarImageView.image = try? await NetworkManager.shared.image(url: urlSring)
+            self.avatarImageView.image = try? await ImageLoader.shared.downloadImage(url: urlSring)
         }
     }
     

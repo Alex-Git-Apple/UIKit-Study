@@ -97,7 +97,7 @@ class UserInfoVC: UIViewController {
         let followerItemVC = GFFollowerItemVC(user: userInfo)
         followerItemVC.delegate = self
         self.addChildVC(childVC:followerItemVC , to: itemViewTwo)
-        dateLabel.text = "GitHub since \(userInfo.createdAt.convertToDisplayFormate())"
+        dateLabel.text = "GitHub since \(userInfo.createdAt.convertToMonthYearFormat())"
     }
     
     func addChildVC(childVC: UIViewController, to containerView: UIView) {
