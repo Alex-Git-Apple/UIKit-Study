@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 @MainActor
 class FollowerCell: UICollectionViewCell {
@@ -25,8 +26,11 @@ class FollowerCell: UICollectionViewCell {
     }
     
     func configure(follower: Follower) {
-        label.text = follower.login
-        downloadImageAsync(url: follower.avatarUrl)
+        contentConfiguration = UIHostingConfiguration {
+            FollowerView(follower: follower)
+        }
+//        label.text = follower.login
+//        downloadImageAsync(url: follower.avatarUrl)
     }
     
     func downloadImageAsync(url urlSring: String) {
