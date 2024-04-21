@@ -24,13 +24,31 @@ class FavoriteListVC: UIViewController {
         loadFavorites()
     }
     
+    @available(iOS 17.0, *)
+    override func updateContentUnavailableConfiguration(using state: UIContentUnavailableConfigurationState) {
+        if favorites.isEmpty {
+            var config = UIContentUnavailableConfiguration.empty()
+            config.image = .init(systemName: "star")
+            config.text = "No Favorite"
+            config.secondaryText = "Add a favorite on the follower list screen"
+            contentUnavailableConfiguration = config
+        } else {
+            contentUnavailableConfiguration = nil
+        }
+    }
+    
     func loadFavorites() {
         do {
             favorites = try PersistenceManager.retrieveFavorites()
             tableView.reloadData()
-            if favorites.isEmpty {
-                showEmptyStateView(with: "No Favorites?\nAdd one on the follower screen.", in: self.view)
+            if #available(iOS 17.0, *) {
+                setNeedsUpdateContentUnavailableConfiguration()
+            } else {
+                if favorites.isEmpty {
+                    showEmptyStateView(with: "No Favorites?\nAdd one on the follower screen.", in: self.view)
+                }
             }
+            
         } catch {
             var message = ""
             if let error = error as? GFError {

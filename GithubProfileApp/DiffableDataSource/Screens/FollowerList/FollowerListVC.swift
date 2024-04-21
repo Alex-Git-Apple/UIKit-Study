@@ -42,9 +42,22 @@ class FollowerListVC: UIViewController {
         configureCollectionView()
         configureDataSource()
         configureSearchController()
-
-        // Do any additional setup after loading the view.
         loadFollowers()
+    }
+    
+    @available(iOS 17.0, *)
+    override func updateContentUnavailableConfiguration(using state: UIContentUnavailableConfigurationState) {
+        if followers.isEmpty && !isLoading {
+            var config = UIContentUnavailableConfiguration.empty()
+            config.image = .init(systemName: "person.slash")
+            config.text = "No Followers"
+            config.secondaryText = "This user has no followers."
+            contentUnavailableConfiguration = config
+        } else if isSearching && filteredFollowers.isEmpty {
+            contentUnavailableConfiguration = UIContentUnavailableConfiguration.search()
+        } else {
+            contentUnavailableConfiguration = nil
+        }
     }
     
     func configureCollectionView() {
@@ -113,13 +126,16 @@ class FollowerListVC: UIViewController {
                     hasMoreFollowers = false
                 }
                 followers += latestLoadedFollowers
-                
-                if followers.isEmpty {
-                    let message = "This user doesn't have any followers. Go follow them. 😁"
-                    showEmptyStateView(with: message, in: self.view)
-                    return
-                }
                 updateData(on: followers)
+                if #available(iOS 17.0, *) {
+                    setNeedsUpdateContentUnavailableConfiguration()
+                } else {
+                    if followers.isEmpty {
+                        let message = "This user doesn't have any followers. Go follow them. 😁"
+                        showEmptyStateView(with: message, in: self.view)
+                        return
+                    }
+                }
             } catch {
                 print("Failed to load followers")
             }
@@ -181,6 +197,9 @@ extension FollowerListVC: UISearchResultsUpdating {
         isSearching = true
         filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
         updateData(on: filteredFollowers)
+        if #available(iOS 17.0, *) {
+            setNeedsUpdateContentUnavailableConfiguration()
+        }
     }
 }
 
