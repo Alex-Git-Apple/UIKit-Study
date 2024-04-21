@@ -17,12 +17,17 @@ class FavoriteListVC: UIViewController {
 
         configureViewController()
         configureTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadFavorites()
     }
     
     func loadFavorites() {
         do {
             favorites = try PersistenceManager.retrieveFavorites()
+            tableView.reloadData()
             if favorites.isEmpty {
                 showEmptyStateView(with: "No Favorites?\nAdd one on the follower screen.", in: self.view)
             }
