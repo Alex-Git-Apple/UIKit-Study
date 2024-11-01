@@ -4,8 +4,6 @@
 //
 //  Created by Pin Lu on 3/18/24.
 //
-
-import Combine
 import UIKit
 
 class TimerCell: UITableViewCell {
@@ -15,10 +13,8 @@ class TimerCell: UITableViewCell {
     private var stackView = UIStackView()
     private var idLabel = UILabel(frame: .zero)
     private let label = UILabel(frame: .zero)
-    private var subscriptions = Set<AnyCancellable>()
-    
-    private var data: RunningTime!
-    
+    private var currentTime = 0.0
+        
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -35,9 +31,8 @@ class TimerCell: UITableViewCell {
     
     func setupStackView() {
         stackView.axis = .vertical
-        stackView.backgroundColor = .systemPink
-        stackView.distribution = .fillEqually
-        stackView.alignment = .leading
+        stackView.distribution = .fill
+        stackView.alignment = .center
         contentView.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -51,18 +46,13 @@ class TimerCell: UITableViewCell {
     
     func setupLabel() {
         stackView.addArrangedSubview(idLabel)
-        stackView.alignment = .center
         stackView.addArrangedSubview(label)
+        label.text = "0.0"
     }
     
-    func configure(_ data: RunningTime, _ id: Int) {
-        self.data = data
-        idLabel.text = String(id)
-        data.$value
-            .sink(receiveValue: { value in
-                self.label.text = String(format: "%.1f", value)
-            })
-            .store(in: &subscriptions)
+    func increament(interval: Double) {
+        currentTime += interval
+        self.label.text = String(format: "Timer: %.1f", currentTime)
     }
     
 }
