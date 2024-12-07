@@ -13,7 +13,6 @@
 		FE5E5B462BA8FB6600C07599 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5E5B442BA8FB6600C07599 /* Main.storyboard */; };
 		FE5E5B482BA8FB6700C07599 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE5E5B472BA8FB6700C07599 /* Assets.xcassets */; };
 		FE5E5B4B2BA8FB6700C07599 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5E5B492BA8FB6700C07599 /* LaunchScreen.storyboard */; };
-		FE5E5B532BA8FC9B00C07599 /* TimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5E5B522BA8FC9B00C07599 /* TimerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +24,6 @@
 		FE5E5B472BA8FB6700C07599 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE5E5B4A2BA8FB6700C07599 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE5E5B4C2BA8FB6700C07599 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FE5E5B522BA8FC9B00C07599 /* TimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +59,6 @@
 				FE5E5B3E2BA8FB6600C07599 /* AppDelegate.swift */,
 				FE5E5B402BA8FB6600C07599 /* SceneDelegate.swift */,
 				FE5E5B422BA8FB6600C07599 /* ViewController.swift */,
-				FE5E5B522BA8FC9B00C07599 /* TimerCell.swift */,
 				FE5E5B442BA8FB6600C07599 /* Main.storyboard */,
 				FE5E5B472BA8FB6700C07599 /* Assets.xcassets */,
 				FE5E5B492BA8FB6700C07599 /* LaunchScreen.storyboard */,
@@ -144,7 +141,6 @@
 				FE5E5B432BA8FB6600C07599 /* ViewController.swift in Sources */,
 				FE5E5B3F2BA8FB6600C07599 /* AppDelegate.swift in Sources */,
 				FE5E5B412BA8FB6600C07599 /* SceneDelegate.swift in Sources */,
-				FE5E5B532BA8FC9B00C07599 /* TimerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

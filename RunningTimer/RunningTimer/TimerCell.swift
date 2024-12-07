@@ -9,13 +9,17 @@ import UIKit
 class TimerCell: UITableViewCell {
     
     static let reusedID = "TimerCell"
+    static var id = 1
     
     private var stackView = UIStackView()
     private var idLabel = UILabel(frame: .zero)
     private let label = UILabel(frame: .zero)
     private var currentTime = 0.0
+    let id: Int
         
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        id = Self.id
+        Self.id += 1
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }
@@ -52,7 +56,7 @@ class TimerCell: UITableViewCell {
     
     func increament(interval: Double) {
         currentTime += interval
-        self.label.text = String(format: "Timer: %.1f", currentTime)
+        self.label.text = String(format: "id: %d  Timer: %.1f", id, currentTime)
     }
     
 }
