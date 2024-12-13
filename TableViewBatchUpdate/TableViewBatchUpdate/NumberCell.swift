@@ -7,8 +7,18 @@
 
 import UIKit
 
-class NumberCell: UITableViewCell {
-    static let reusedID = "NumberCell"
+class PostCell: UITableViewCell {
+    static let reusedID = "PostCell"
+    
+    struct Model: Equatable, Hashable {
+        var num: Int
+    }
+    
+    var model: Model? {
+        didSet {
+            applyModel()
+        }
+    }
     
     let label = UILabel(frame: .zero)
     
@@ -23,8 +33,10 @@ class NumberCell: UITableViewCell {
     }
     
     private func setUp() {
-        contentView.addSubview(label)
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.black.cgColor
         
+        contentView.addSubview(label)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -40,7 +52,8 @@ class NumberCell: UITableViewCell {
         ])
     }
     
-    func setLabel(_ number: Int) {
-        label.text = "number: \(number)"
+    func applyModel() {
+        guard let model else { return }
+        label.text = String(model.num)
     }
 }
